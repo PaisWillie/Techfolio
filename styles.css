@@ -117,13 +117,9 @@ a {
 }
 
 /* Experiences */
-.experiences {
-  /* Additional styles can be added here */
-}
-
 .experience-link {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 11fr;
   gap: 2rem;
   padding: 0.75rem 1rem;
   text-decoration: none;

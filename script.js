@@ -19,28 +19,8 @@ writeRandomQuote = function () {
 // Call the function to display a random quote
 writeRandomQuote();
 
-// Hard-coded repository data
-var repositories = [
-  {
-    name: "Website Portfolio",
-    description:
-      "My personal website portfolio built with HTML, CSS, and JavaScript.",
-    url: "https://github.com/PaisWillie/Website-Portfolio",
-    languages: ["JavaScript", "HTML", "CSS"],
-    date: "2023 — PRESENT",
-  },
-  {
-    name: "Project Alpha",
-    description: "An innovative project that solves complex problems.",
-    url: "https://github.com/PaisWillie/Project-Alpha",
-    languages: ["Python", "Flask"],
-    date: "2022 — 2023",
-  },
-  // Add more repositories as needed
-];
-
-// Function to render repositories using jQuery
-function renderRepositoriesWithjQuery() {
+// Function to render repositories using jQuery and fetched data
+function renderRepositoriesWithjQuery(repositories) {
   var experiencesSection = $('.experiences');
 
   // Clear any existing content
@@ -53,7 +33,8 @@ function renderRepositoriesWithjQuery() {
 
     // Create the date div
     var experienceDate = $('<div>').addClass('experience-date');
-    var dateSpan = $('<span>').text(repo.date);
+    var createdYear = new Date(repo.created_at).getFullYear();
+    var dateSpan = $('<span>').text(`${createdYear}`);
     experienceDate.append(dateSpan);
 
     // Create the details div
@@ -65,7 +46,8 @@ function renderRepositoriesWithjQuery() {
     // Create the title link
     var titleLink = $('<a>')
       .attr({
-        href: repo.url,
+        // Use the homepage if available, otherwise use the GitHub URL
+        href: repo.homepage || repo.html_url,
         target: '_blank',
         rel: 'noreferrer',
       })
@@ -88,14 +70,14 @@ function renderRepositoriesWithjQuery() {
     // Create the description paragraph
     var experienceDescription = $('<p>')
       .addClass('experience-description')
-      .text(repo.description);
+      .text(repo.description || 'No description provided.');
 
     // Create the experience links div
     var experienceLinks = $('<div>').addClass('experience-links');
 
     var repoLink = $('<a>')
       .attr({
-        href: repo.url,
+        href: repo.html_url,
         target: '_blank',
         rel: 'noreferrer',
       })
@@ -117,10 +99,13 @@ function renderRepositoriesWithjQuery() {
     // Create the tags div
     var experienceTags = $('<div>').addClass('experience-tags');
 
-    repo.languages.forEach(function (language) {
-      var tag = $('<div>').addClass('tag').text(language);
-      experienceTags.append(tag);
-    });
+    // Display all languages
+    if (repo.languages && repo.languages.length > 0) {
+      repo.languages.forEach(function (language) {
+        var tag = $('<div>').addClass('tag').text(language);
+        experienceTags.append(tag);
+      });
+    }
 
     // Assemble the experience details
     experienceDetails.append(
@@ -138,19 +123,43 @@ function renderRepositoriesWithjQuery() {
   });
 }
 
-// Call the function to render repositories using jQuery
-renderRepositoriesWithjQuery();
-
 // Function to fetch repositories from GitHub API using Fetch API
 function fetchRepositories() {
-  fetch('https://api.github.com/users/PaisWillie/repos')
+  fetch('https://api.github.com/users/PaisWillie/repos?per_page=25')
     .then(response => response.json())
     .then(data => {
+
+      // Sort the data by created_at date
+      data.sort(function (a, b) {
+        return new Date(b.created_at) - new Date(a.created_at);
+      });
+
       // Log the data to the console
       console.log('Fetched Repositories:', data);
 
-      // Store the data for later use
-      window.fetchedRepositories = data;
+      // For each repository, fetch the languages
+      const languagePromises = data.map(repo => {
+        return fetch(repo.languages_url)
+          .then(response => response.json())
+          .then(languages => {
+            // Add the languages array to the repo object
+            repo.languages = Object.keys(languages);
+            return repo;
+          });
+      });
+
+      // Wait for all language fetches to complete
+      Promise.all(languagePromises)
+        .then(repositoriesWithLanguages => {
+          // Store the data for later use
+          window.fetchedRepositories = repositoriesWithLanguages;
+
+          // Call the function to render repositories using fetched data
+          renderRepositoriesWithjQuery(window.fetchedRepositories);
+        })
+        .catch(error => {
+          console.error('Error fetching languages:', error);
+        });
     })
     .catch(error => {
       console.error('Error fetching repositories:', error);
