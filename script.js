@@ -1,28 +1,19 @@
-// script.js
-
 // Random Quote Function
 writeRandomQuote = function () {
-  var quotes = new Array();
-  quotes[0] = "Talk is cheap. Show me the code. - Linus Torvalds";
-  quotes[1] =
-    "Programs must be written for people to read, and only incidentally for machines to execute. - Harold Abelson";
-  quotes[2] =
-    "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler";
-  quotes[3] =
-    "First, solve the problem. Then, write the code. - John Johnson";
-  quotes[4] =
-    "Experience is the name everyone gives to their mistakes. - Oscar Wilde";
-  quotes[5] =
-    "In order to be irreplaceable, one must always be different. - Coco Chanel";
-  quotes[6] =
-    "Java is to JavaScript what car is to Carpet. - Chris Heilmann";
-  quotes[7] = "Knowledge is power. - Francis Bacon";
-  quotes[8] =
-    "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday’s code. - Dan Salomon";
-  quotes[9] =
-    "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. - Antoine de Saint-Exupery";
+  var quotes = [
+    "Talk is cheap. Show me the code. - Linus Torvalds",
+    "Programs must be written for people to read, and only incidentally for machines to execute. - Harold Abelson",
+    "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler",
+    "First, solve the problem. Then, write the code. - John Johnson",
+    "Experience is the name everyone gives to their mistakes. - Oscar Wilde",
+    "In order to be irreplaceable, one must always be different. - Coco Chanel",
+    "Java is to JavaScript what car is to Carpet. - Chris Heilmann",
+    "Knowledge is power. - Francis Bacon",
+    "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday’s code. - Dan Salomon",
+    "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. - Antoine de Saint-Exupery"
+  ];
   var rand = Math.floor(Math.random() * quotes.length);
-  document.querySelector('.random-quote').textContent = quotes[rand];
+  $('.random-quote').text(quotes[rand]);
 };
 
 // Call the function to display a random quote
@@ -48,114 +39,132 @@ var repositories = [
   // Add more repositories as needed
 ];
 
-// Function to render repositories
-function renderRepositories() {
-  // Get the experiences section
-  var experiencesSection = document.querySelector('.experiences');
+// Function to render repositories using jQuery
+function renderRepositoriesWithjQuery() {
+  var experiencesSection = $('.experiences');
 
   // Clear any existing content
-  experiencesSection.innerHTML = '';
+  experiencesSection.empty();
 
   // Loop through each repository
   repositories.forEach(function (repo) {
     // Create the main container div
-    var experienceLink = document.createElement('div');
-    experienceLink.className = 'experience-link';
+    var experienceLink = $('<div>').addClass('experience-link');
 
     // Create the date div
-    var experienceDate = document.createElement('div');
-    experienceDate.className = 'experience-date';
-    var dateSpan = document.createElement('span');
-    dateSpan.textContent = repo.date;
-    experienceDate.appendChild(dateSpan);
+    var experienceDate = $('<div>').addClass('experience-date');
+    var dateSpan = $('<span>').text(repo.date);
+    experienceDate.append(dateSpan);
 
     // Create the details div
-    var experienceDetails = document.createElement('div');
-    experienceDetails.className = 'experience-details';
+    var experienceDetails = $('<div>').addClass('experience-details');
 
     // Create the header div
-    var experienceHeader = document.createElement('div');
-    experienceHeader.className = 'experience-header';
+    var experienceHeader = $('<div>').addClass('experience-header');
 
     // Create the title link
-    var titleLink = document.createElement('a');
-    titleLink.href = repo.url;
-    titleLink.target = '_blank';
-    titleLink.rel = 'noreferrer';
-
-    var experienceTitle = document.createElement('h3');
-    experienceTitle.className = 'experience-title';
-    experienceTitle.textContent = repo.name;
-
-    titleLink.appendChild(experienceTitle);
+    var titleLink = $('<a>')
+      .attr({
+        href: repo.url,
+        target: '_blank',
+        rel: 'noreferrer',
+      })
+      .append(
+        $('<h3>').addClass('experience-title').text(repo.name)
+      );
 
     // Create the external icon
-    var externalIcon = document.createElement('img');
-    externalIcon.width = 25;
-    externalIcon.height = 25;
-    externalIcon.src =
-      'https://img.icons8.com/external-thin-kawalan-studio/100/FFFFFF/external-arrow-up-right-arrows-thin-kawalan-studio.png';
-    externalIcon.alt = 'External Link';
-    externalIcon.className = 'external-icon';
+    var externalIcon = $('<img>')
+      .attr({
+        width: 25,
+        height: 25,
+        src: 'https://img.icons8.com/external-thin-kawalan-studio/100/FFFFFF/external-arrow-up-right-arrows-thin-kawalan-studio.png',
+        alt: 'External Link',
+      })
+      .addClass('external-icon');
 
-    experienceHeader.appendChild(titleLink);
-    experienceHeader.appendChild(externalIcon);
+    experienceHeader.append(titleLink, externalIcon);
 
     // Create the description paragraph
-    var experienceDescription = document.createElement('p');
-    experienceDescription.className = 'experience-description';
-    experienceDescription.textContent = repo.description;
+    var experienceDescription = $('<p>')
+      .addClass('experience-description')
+      .text(repo.description);
 
     // Create the experience links div
-    var experienceLinks = document.createElement('div');
-    experienceLinks.className = 'experience-links';
+    var experienceLinks = $('<div>').addClass('experience-links');
 
-    var repoLink = document.createElement('a');
-    repoLink.href = repo.url;
-    repoLink.target = '_blank';
-    repoLink.rel = 'noreferrer';
-    repoLink.className = 'repo-link';
+    var repoLink = $('<a>')
+      .attr({
+        href: repo.url,
+        target: '_blank',
+        rel: 'noreferrer',
+      })
+      .addClass('repo-link')
+      .append(
+        $('<img>')
+          .attr({
+            width: 15,
+            height: 15,
+            src: 'https://img.icons8.com/ios-filled/15/FFFFFF/link--v1.png',
+            alt: 'Link',
+          })
+          .addClass('link-icon'),
+        $('<p>').text('GitHub Repository')
+      );
 
-    var linkIcon = document.createElement('img');
-    linkIcon.width = 15;
-    linkIcon.height = 15;
-    linkIcon.src =
-      'https://img.icons8.com/ios-filled/15/FFFFFF/link--v1.png';
-    linkIcon.alt = 'Link';
-    linkIcon.className = 'link-icon';
-
-    var linkText = document.createElement('p');
-    linkText.textContent = 'GitHub Repository';
-
-    repoLink.appendChild(linkIcon);
-    repoLink.appendChild(linkText);
-    experienceLinks.appendChild(repoLink);
+    experienceLinks.append(repoLink);
 
     // Create the tags div
-    var experienceTags = document.createElement('div');
-    experienceTags.className = 'experience-tags';
+    var experienceTags = $('<div>').addClass('experience-tags');
 
     repo.languages.forEach(function (language) {
-      var tag = document.createElement('div');
-      tag.className = 'tag';
-      tag.textContent = language;
-      experienceTags.appendChild(tag);
+      var tag = $('<div>').addClass('tag').text(language);
+      experienceTags.append(tag);
     });
 
     // Assemble the experience details
-    experienceDetails.appendChild(experienceHeader);
-    experienceDetails.appendChild(experienceDescription);
-    experienceDetails.appendChild(experienceLinks);
-    experienceDetails.appendChild(experienceTags);
+    experienceDetails.append(
+      experienceHeader,
+      experienceDescription,
+      experienceLinks,
+      experienceTags
+    );
 
     // Assemble the main container
-    experienceLink.appendChild(experienceDate);
-    experienceLink.appendChild(experienceDetails);
+    experienceLink.append(experienceDate, experienceDetails);
 
     // Append to the experiences section
-    experiencesSection.appendChild(experienceLink);
+    experiencesSection.append(experienceLink);
   });
 }
 
-// Call the function to render repositories
-renderRepositories();
+// Call the function to render repositories using jQuery
+renderRepositoriesWithjQuery();
+
+// Function to fetch repositories from GitHub API using Fetch API
+function fetchRepositories() {
+  fetch('https://api.github.com/users/PaisWillie/repos')
+    .then(response => response.json())
+    .then(data => {
+      // Log the data to the console
+      console.log('Fetched Repositories:', data);
+
+      // Store the data for later use
+      window.fetchedRepositories = data;
+    })
+    .catch(error => {
+      console.error('Error fetching repositories:', error);
+    });
+}
+
+// Call the function to fetch repositories
+fetchRepositories();
+
+// Tooltip functionality for social icons
+$(document).ready(function () {
+  $('.social-links a').each(function () {
+    var link = $(this);
+    var tooltipText = link.find('img').attr('alt');
+    link.attr('title', tooltipText);
+  });
+});
