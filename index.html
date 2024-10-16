@@ -4,138 +4,177 @@
     <title>Willie Pai</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-    </style>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div>
-      <header>
-        <div>
-          <h1>Willie Pai</h1>
-          <h2>Software Engineering Student</h2>
-          <p>
-            I build user-friendly apps, where simplicity and usability are at
-            the forefront of design.
-          </p>
-        </div>
-        <div>
-          <a href="https://github.com/PaisWillie/">
-            <img
-              width="25"
-              height="25"
-              src="https://img.icons8.com/ios-filled/100/000000/github.png"
-              alt="GitHub"
-            />
-          </a>
-          <a href="https://linkedin.com/in/willie-pai/">
-            <img
-              width="25"
-              height="25"
-              src="https://img.icons8.com/ios-filled/100/000000/linkedin.png"
-              alt="LinkedIn"
-            />
-          </a>
-          <a href="mailto:paiw@mcmaster.ca">
-            <img
-              width="25"
-              height="25"
-              src="https://img.icons8.com/material-rounded/100/000000/mail.png"
-              alt="Email"
-            />
-          </a>
-          <a href="https://williep.ai/resume" target="_blank" rel="noreferrer">
-            <p>My Resume</p>
-          </a>
-        </div>
-      </header>
-
-      <main>
-        <!-- Introduction Section -->
-        <section>
-          <p>
-            Back in 2020, I embarked on my software engineering journey during
-            my first year at McMaster University, developing small projects and
-            applications that quickly expanded into real-world software
-            development roles. Fast-forward to today, and I’ve had the
-            opportunity to lead the development of websites for multiple
-            student-run organizations, work as a software developer at multiple
-            companies, and collaborate with engineering teams on impactful
-            projects.
-          </p>
-          <p>
-            My current focus lies in full-stack development using frameworks
-            like Next.js and React Native, ensuring that the software I build is
-            both scalable and user-friendly. I particularly enjoy working at the
-            intersection of engineering and design, where I can create
-            applications that are not only highly functional but also visually
-            appealing.
-          </p>
-          <p>
-            In my free time, I enjoy experimenting with new web technologies and
-            improving my skills through side projects, or practicing my Rubik's
-            speedcubing skills.
-          </p>
-        </section>
-
-        <!-- Projects Section -->
-        <section>
-          <a href="https://williep.ai/" target="_blank" rel="noreferrer">
-            <div>
-              <span>2024 — PRESENT</span>
-            </div>
-            <div>
-              <div>
-                <h3>GitHub Repository Name</h3>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur, ducimus magni exercitationem accusamus nesciunt
-                veniam similique amet provident tenetur libero tempora aut
-                repudiandae quaerat doloremque soluta nulla ullam architecto
-                optio.
-              </p>
-              <div>
-                <a
-                  href="https://github.com/PaisWillie/Website-Portfolio"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <p>GitHub Repository</p>
-                </a>
-              </div>
-              <div>
-                <div>JavaScript</div>
-                <div>TypeScript</div>
-                <div>React</div>
-                <div>Storybook</div>
-              </div>
-            </div>
-          </a>
-        </section>
-
-        <!-- Footnote Section -->
-        <section>
-          <p>
-            Website portfolio by
-            <a href="#">Techfolio</a>, inspired by
+    <div class="page-container">
+      <div class="content-grid">
+        <header class="sidebar">
+          <div class="intro">
+            <h1 class="name">Willie Pai</h1>
+            <h2 class="title">Software Engineering Student</h2>
+            <p class="summary">
+              I build user-friendly apps, where simplicity and usability are at
+              the forefront of design.
+            </p>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/PaisWillie/">
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios-filled/100/FFFFFF/github.png"
+                alt="GitHub"
+                class="social-icon"
+              />
+            </a>
+            <a href="https://linkedin.com/in/willie-pai/">
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios-filled/100/FFFFFF/linkedin.png"
+                alt="LinkedIn"
+                class="social-icon"
+              />
+            </a>
+            <a href="mailto:paiw@mcmaster.ca">
+              <img
+                width="25"
+                height="25"
+                src="https://img.icons8.com/material-rounded/100/FFFFFF/mail.png"
+                alt="Email"
+                class="social-icon"
+              />
+            </a>
             <a
-              href="https://github.com/bchiang7"
+              href="https://williep.ai/resume"
               target="_blank"
               rel="noreferrer"
-              >Brittany Chiang</a
-            >'s design. Coded with <a href="https://react.dev/">React</a>,
-            <a href="https://tailwindcss.com/">Tailwind CSS</a>, and
-            <a href="https://www.typescriptlang.org/">TypeScript</a>. Icons by
-            <a href="https://icons8.com" target="_blank" rel="noreferrer"
-              >Icons8</a
-            >.
-          </p>
-        </section>
-      </main>
+              class="resume-link"
+            >
+              <p class="resume-text">My Resume</p>
+              <img
+                width="15"
+                height="15"
+                src="https://img.icons8.com/windows/100/FFFFFF/right.png"
+                alt="right"
+                class="resume-icon"
+              />
+            </a>
+          </div>
+        </header>
+        <main class="main-content">
+          <!-- Introduction -->
+          <section class="introduction">
+            <p>
+              Back in 2020, I embarked on my software engineering journey during
+              my first year at McMaster University, developing small projects
+              and applications that quickly expanded into real-world software
+              development roles. Fast-forward to today, and I’ve had the
+              opportunity to lead the development of websites for multiple
+              student-run organizations, work as a software developer at
+              multiple companies, and collaborate with engineering teams on
+              impactful projects.
+            </p>
+            <p>
+              My current focus lies in full-stack development using frameworks
+              like Next.js and React Native, ensuring that the software I build
+              is both scalable and user-friendly. I particularly enjoy working
+              at the intersection of engineering and design, where I can create
+              applications that are not only highly functional but also visually
+              appealing.
+            </p>
+            <p>
+              In my free time, I enjoy experimenting with new web technologies
+              and improving my skills through side projects, or practicing my
+              Rubik's speedcubing skills.
+            </p>
+          </section>
+          <!-- Experiences -->
+          <section class="experiences">
+            <div class="experience-link">
+              <div class="experience-date">
+                <span>2024 — PRESENT</span>
+              </div>
+              <div class="experience-details">
+                <div class="experience-header">
+                  <a href="#" target="_blank" rel="noreferrer">
+                    <h3 class="experience-title">GitHub Repository Name</h3>
+                  </a>
+                  <img
+                    width="25"
+                    height="25"
+                    src="https://img.icons8.com/external-thin-kawalan-studio/100/FFFFFF/external-arrow-up-right-arrows-thin-kawalan-studio.png"
+                    alt="External Link"
+                    class="external-icon"
+                  />
+                </div>
+                <p class="experience-description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Aspernatur, ducimus magni exercitationem accusamus nesciunt
+                  veniam similique amet provident tenetur libero tempora aut
+                  repudiandae quaerat doloremque soluta nulla ullam architecto
+                  optio.
+                </p>
+                <div class="experience-links">
+                  <a
+                    href="https://github.com/PaisWillie/Website-Portfolio"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="repo-link"
+                  >
+                    <img
+                      width="15"
+                      height="15"
+                      src="https://img.icons8.com/ios-filled/15/FFFFFF/link--v1.png"
+                      alt="Link"
+                      class="link-icon"
+                    />
+                    <p>GitHub Repository</p>
+                  </a>
+                </div>
+                <div class="experience-tags">
+                  <div class="tag">JavaScript</div>
+                  <div class="tag">TypeScript</div>
+                  <div class="tag">React</div>
+                  <div class="tag">Storybook</div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Projects -->
+          <section class="projects">
+            <!-- Add project content here -->
+          </section>
+          <!-- Footnote -->
+          <section class="footnote">
+            <p>
+              Website portfolio by
+              <a href="#" class="footnote-link">Techfolio</a>. <br />Inspired by
+              <a
+                href="https://github.com/bchiang7"
+                target="_blank"
+                rel="noreferrer"
+                class="footnote-link"
+              >
+                Brittany Chiang</a
+              >'s design. Icons by
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://icons8.com"
+                class="footnote-link"
+              >
+                Icons8</a
+              >.
+            </p>
+          </section>
+        </main>
+      </div>
     </div>
   </body>
 </html>
