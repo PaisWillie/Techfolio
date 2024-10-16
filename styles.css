@@ -235,3 +235,9 @@ a {
 .footnote-link:hover {
   color: #67e8f9;
 }
+
+.random-quote {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 1rem;
+}
