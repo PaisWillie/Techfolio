@@ -90,6 +90,12 @@
                 class="resume-icon"
               />
             </a>
+            <script>
+              document.querySelectorAll(".social-links a").forEach((link) => {
+                const tooltipText = link.querySelector("img").alt;
+                link.setAttribute("title", tooltipText);
+              });
+            </script>
           </div>
         </header>
         <main class="main-content">
