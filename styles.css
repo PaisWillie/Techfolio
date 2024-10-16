@@ -22,6 +22,14 @@ a {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
 /* Sidebar */
 .sidebar {
   width: 83.333333%;
@@ -34,6 +42,12 @@ a {
   flex-direction: column;
   justify-content: space-between;
   height: 70dvh;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+  }
 }
 
 /* Introduction */
